@@ -110,11 +110,12 @@ class ProdukController extends Controller
         $data['foto'] = $produk->foto;
 
         if ($request->hasFile('foto')) {
-            $data['foto'] = $file_name;
             $image = $request->file('foto');
             $file_name = $image->getClientOriginalName();
             $file_size = $image->getSize();
             $file_type = $image->getClientOriginalExtension();
+
+            $data['foto'] = $file_name;
     
             $destinationPath = 'foto_produk';
             $image->move($destinationPath, $file_name);

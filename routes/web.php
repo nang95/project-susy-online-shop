@@ -38,6 +38,15 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
     Route::get('pemesanan', 'pemesananController@index')->name('pemesanan');
     Route::delete('pemesanan', 'pemesananController@delete')->name('pemesanan.delete');
 
-    Route::get('pemesanan', 'pemesananController@index')->name('pemesanan');
-    Route::delete('pemesanan', 'pemesananController@delete')->name('pemesanan.delete');
+    Route::get('detail_pemesanan', 'DetailPemesananController@index')->name('detail_pemesanan');
+    Route::delete('detail_pemesanan', 'DetailPemesananController@delete')->name('detail_pemesanan.delete');
+
+    // Kontak
+    Route::get('kontak', 'KontakController@index')->name('kontak');
+    Route::put('kontak', 'KontakController@update')->name('kontak.update');
+});
+
+Route::prefix('/pelanggan')->name('pelanggan.')->namespace('Pelanggan')->group(function(){
+    Route::get('/', 'BerandaController@index')->name('/');
+    Route::get('beranda', 'BerandaController@index')->name('beranda');
 });

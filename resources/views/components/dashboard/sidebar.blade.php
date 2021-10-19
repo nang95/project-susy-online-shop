@@ -3,7 +3,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" target="_blank">
         <img src="{{ asset('img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Soft UI Dashboard</span>
+        <span class="ms-1 font-weight-bold">Susy Online Shop</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -40,16 +40,25 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Transaksi</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/profile.html">
+          <a class="nav-link" href="{{ route('admin.pemesanan') }}">
             <span class="material-icons">receipt_long</span>
             <span class="nav-link-text ms-1">Pemesanan</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Web</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.pemesanan') }}">
+            <span class="material-icons">collections</span>
+            <span class="nav-link-text ms-1">Carousel</span>
           </a>
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Info</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/profile.html">
+          <a class="nav-link" href="{{ route('admin.kontak') }}">
             <span class="material-icons">call</span>
             <span class="nav-link-text ms-1">Kontak</span>
           </a>
