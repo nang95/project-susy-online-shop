@@ -17,9 +17,6 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('nama');
             $table->text('foto');
-            $table->unsignedBigInteger('produk_id');
-            $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
-            $table->float('harga_promo');
             $table->timestamps();
         });
     }

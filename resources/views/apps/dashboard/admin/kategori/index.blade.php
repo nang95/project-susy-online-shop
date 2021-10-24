@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.apps.dashboard')
 
 @section('breadcrumbs')
 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -15,7 +15,7 @@
 </script>
 @endif
 <div class="row">
-    <div class="col-6">
+    <div class="col-8">
         <div class="card mb-4">
           <div class="card-header pb-0">
             <h6>Data Kategori</h6>

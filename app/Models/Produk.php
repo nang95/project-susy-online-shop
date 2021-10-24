@@ -14,4 +14,20 @@ class Produk extends Model
     public function kategori(){
         return $this->belongsToMany(Kategori::class);
     }
+
+    public function eventProduk(){
+        return $this->belongsToMany(EventProduk::class);
+    }
+
+    public function event(){
+        return $this->hasMany(Event::class);
+    }
+
+    public function pelangganKeranjang(){
+        return $this->hasMany(PelangganKeranjang::class);
+    }
+
+    public function variasi(){
+        return $this->hasMany(Variasi::class);
+    }
 }

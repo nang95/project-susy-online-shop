@@ -5,13 +5,18 @@
                 <div class="col-12 col-lg-7">
                     <div class="top_single_area d-flex align-items-center">
                         <div class="top_logo">
-                            <a href="#"><img src="{{ asset('img/core-img/logo.png') }}" alt=""></a>
+                            <a href=""><img src="{{ asset('img/core-img/logo.png') }}" alt=""></a>
                         </div>
                         <div class="header-cart-menu d-flex align-items-center ml-auto">
                             <div class="cart">
-                                <a href="#" id="header-cart-btn" target="_blank">
+                                <a href="{{ route('toko.keranjang') }}" id="header-cart-btn">
                                     <span class="cart_quantity">2</span> 
                                     <i class="ti-bag"></i>
+                                </a>
+                            </div>
+                            <div class="cart" style="padding-left: 10px;">
+                                <a href="{{ route('toko.akun') }}" id="header-cart-btn">
+                                    <i class="ti-user"></i>
                                 </a>
                             </div>
                         </div>
@@ -39,10 +44,10 @@
 
                             <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                 <ul class="navbar-nav animated" id="nav">
-                                    <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Produk</a></li>
+                                    <li class="nav-item active"><a class="nav-link" href="{{ route('toko./') }}">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('toko.produk') }}">Produk</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#">Tentang Kami</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Promo</a></li>
                                 </ul>
                             </div>
                         </nav>

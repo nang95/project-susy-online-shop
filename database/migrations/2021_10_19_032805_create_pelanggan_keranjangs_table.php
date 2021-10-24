@@ -18,7 +18,7 @@ class CreatePelangganKeranjangsTable extends Migration
             $table->unsignedBigInteger('produk_id');
             $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
             $table->unsignedBigInteger('pelanggan_id');
-            $table->foreign('pelanggan_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('pelanggan_id')->references('id')->on('pelanggans')->onDelete('cascade');
             $table->integer('jumlah');
             $table->timestamps();
         });

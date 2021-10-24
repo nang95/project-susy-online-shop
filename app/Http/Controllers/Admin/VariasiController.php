@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Produk, Variasi};
 use Session;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class VariasiController extends Controller
 {
@@ -52,6 +53,18 @@ class VariasiController extends Controller
     {
         $variasi = $request->all();
 
+        $image = $request->file('foto');
+        $file_name = $image->getClientOriginalName();
+        $file_size = $image->getSize();
+        $file_type = $image->getClientOriginalExtension();
+
+        $destinationPath = 'foto_produk';
+        $image->move($destinationPath, $file_name);
+
+        $image_resize = Image::make('foto_produk/'. $file_name);   
+
+        $variasi['foto'] = $file_name;
+
         Variasi::create($variasi);
 
         Session::flash('flash_message', 'Data telah disimpan');
@@ -80,6 +93,23 @@ class VariasiController extends Controller
     public function update(Request $request)
     {
         $variasi = Variasi::findOrFail($request->id);
+
+        $data = $request->all();
+        $data['foto'] = $variasi->foto;
+
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $file_name = $image->getClientOriginalName();
+            $file_size = $image->getSize();
+            $file_type = $image->getClientOriginalExtension();
+
+            $data['foto'] = $file_name;
+    
+            $destinationPath = 'foto_produk';
+            $image->move($destinationPath, $file_name);
+    
+            $image_resize = Image::make('foto_produk/'. $file_name);   
+        }
 
         $variasi->update($request->all());
         

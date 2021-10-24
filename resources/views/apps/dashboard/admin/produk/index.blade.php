@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.apps.dashboard')
 
 @section('breadcrumbs')
 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -35,7 +35,7 @@
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deskripsi</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                   </tr>
@@ -58,7 +58,7 @@
                     <td>
                       <a href="{{ asset('foto_produk') }}/{{$data_produk->foto}}">Download</a>
                     </td>
-                    <td>{{ Str::limit($data_produk->deskripsi, 10) }}</td>
+                    <td>Rp. {{ number_format($data_produk->harga) }}</td>
                     <td>
                       @foreach ($data_produk->kategori()->pluck('nama')->toArray() as $key => $value)
                         <label class="label label-success">{{ $value }},</label>

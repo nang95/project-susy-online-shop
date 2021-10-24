@@ -106,7 +106,6 @@ class ProdukController extends Controller
         $data = $request->all();
         $produk = Produk::findOrFail($request->id);
 
-
         $data['foto'] = $produk->foto;
 
         if ($request->hasFile('foto')) {

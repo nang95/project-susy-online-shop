@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.apps.dashboard')
 
 @section('content')
 <div class="row">

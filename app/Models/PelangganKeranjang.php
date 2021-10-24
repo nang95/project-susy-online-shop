@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PelangganKeranjang extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function variasi(){
+        return $this->belongsTo(Variasi::class);
+    }
 }

@@ -27,13 +27,19 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.produk') }}">
             <span class="material-icons">shopping_bag</span>
-            <span class="nav-link-text ms-1">Product</span>
+            <span class="nav-link-text ms-1">Produk</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{{ route('admin.pelanggan') }}">
             <span class="material-icons">people</span>
             <span class="nav-link-text ms-1">Pelanggan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.event') }}">
+            <span class="material-icons">notifications</span>
+            <span class="nav-link-text ms-1">Event</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -49,7 +55,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Web</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('admin.pemesanan') }}">
+          <a class="nav-link" href="{{ route('admin.carousel') }}">
             <span class="material-icons">collections</span>
             <span class="nav-link-text ms-1">Carousel</span>
           </a>
