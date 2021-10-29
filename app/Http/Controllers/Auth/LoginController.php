@@ -20,9 +20,14 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('toko./');
+            return redirect()->route('checkUserLevel');
         }
         
         return redirect()->back();
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect('/login');
     }
 }

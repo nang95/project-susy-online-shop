@@ -30,15 +30,22 @@
                             <div class="col-12 col-lg-7">
                                 <div class="quickview_pro_des">
                                     <h4 class="title">{{ $item->nama }}</h4>
-                                    <div class="top_seller_product_rating mb-15">
+                                    {{-- <div class="top_seller_product_rating mb-15">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <h5 class="price">Rp. {{ number_format($item->harga) }}</h5>
-                                    <p>{{ \Illuminate\Support\Str::limit($item->deskripsi, 50) }}</p>
+                                    </div> --}}
+                                    <h5 class="price">
+                                        Rp. {{ number_format($item->promoPrice($item->id, $item->harga)) }}
+                                        @if ($item->isPromo($item->id))
+                                        <span style="text-decoration: line-through;">
+                                            {{ number_format($item->harga) }}
+                                        </span>                                            
+                                        @endif    
+                                    </h5>
+                                    <p>{{ \Illuminate\Support\Str::limit($item->deskripsi, 100) }}</p>
                                     <a href="#">Selengkapnya</a>
                                 </div>
                                 <form action="{{ route('toko.keranjang.insert') }}" method="post">
@@ -49,7 +56,8 @@
                                                     <input name="variasi_id" 
                                                     class="form-check-input" 
                                                     type="radio" 
-                                                    value="{{ $variasi->id }}" id="{{ $variasi->id }}">
+                                                    value="{{ $variasi->id }}" id="{{ $variasi->id }}"
+                                                    required>
                                                     <label class="form-check-label" for="{{ $variasi->id }}">
                                                     {{ $variasi->nama }}
                                                     </label>

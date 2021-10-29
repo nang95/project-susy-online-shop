@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Pelanggan, Contact};
+use App\Models\{Pelanggan, Contact, PelangganKeranjang, Pemesanan};
 class AkunController extends Controller
 {
     public function index(){

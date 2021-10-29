@@ -14,7 +14,8 @@ class AddColumnPemesananIdOnDetailPemesanan extends Migration
     public function up()
     {
         Schema::table('detail_pemesanans', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('pemesanan_id');
+            $table->foreign('pemesanan_id')->references('id')->on('pemesanans')->onDelete('cascade');
         });
     }
 
@@ -26,7 +27,8 @@ class AddColumnPemesananIdOnDetailPemesanan extends Migration
     public function down()
     {
         Schema::table('detail_pemesanans', function (Blueprint $table) {
-            //
+            $table->dropForeign(['pemesanan_id']);
+            $table->dropColumn('pemesanan_id');
         });
     }
 }

@@ -65,12 +65,12 @@
                                 @endphp
                                 @foreach ($keranjang as $item)
                                     @php
-                                        $total += $item->variasi->produk->harga * $item->jumlah;   
+                                        $total += $item->variasi->produk->promoPrice($item->variasi->produk->id, $item->variasi->produk->harga) * $item->jumlah;   
                                     @endphp
                                     <li>
                                         <input type="hidden" name="keranjang_ids[]" value="{{ $item->id }}">
                                         <span>{{ $item->variasi->produk->nama }} ({{ $item->variasi->nama }})</span> 
-                                        <span>Rp. {{ number_format($item->variasi->produk->harga) }} x {{ $item->jumlah }}</span></li>
+                                        <span>Rp. {{ number_format($item->variasi->produk->promoPrice($item->variasi->produk->id, $item->variasi->produk->harga) * $item->jumlah) }} x {{ $item->jumlah }}</span></li>
                                 @endforeach
                                 <li><span>Total</span> <span>Rp. {{ number_format($total) }}</span></li>
                                 <input type="hidden" value="{{ $total }}" name="total_pembayaran">

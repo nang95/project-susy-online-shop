@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Produk, Contact, Variasi, Kategori};
+use App\Models\{Produk, Contact, Variasi, Pelanggan, PelangganKeranjang, Pemesanan, Kategori};
 
 class ProdukController extends Controller
 {
@@ -36,7 +36,8 @@ class ProdukController extends Controller
                                       ->with('kategori_ids', $kategori_ids)
                                       ->with('harga_dari', $harga_dari)
                                       ->with('harga_sampai', $harga_sampai)
-                                      ->with('contact', $contact);
+                                      ->with('contact', $contact)
+                                      ->with('skipped', $skipped);
     }
 
     public function detail(Produk $produk){

@@ -10,14 +10,41 @@
                         <div class="header-cart-menu d-flex align-items-center ml-auto">
                             <div class="cart">
                                 <a href="{{ route('toko.keranjang') }}" id="header-cart-btn">
-                                    <span class="cart_quantity">2</span> 
+                                    @if (!empty(auth()->user()->id))
+                                        @php
+                                            $pelanggan = App\Models\Pelanggan::where('user_id', auth()->user()->id)->first();
+                                            $jumlah_keranjang = App\Models\PelangganKeranjang::where('pelanggan_id', $pelanggan->id)->count();
+                                        @endphp
+                                        <span class="cart_quantity">{{ $jumlah_keranjang }}</span> 
+                                    @endif
                                     <i class="ti-bag"></i>
+                                </a>
+                            </div>
+                            <div class="cart" style="padding-left: 10px;">
+                                <a href="{{ route('toko.pemesanan') }}" id="header-cart-btn">
+                                    @if (!empty(auth()->user()->id))
+                                        @php
+                                            $jumlah_pesanan = App\Models\Pemesanan::where('pelanggan_id', $pelanggan->id)->where('status', '!=', 2)->count();    
+                                        @endphp
+                                        <span class="cart_quantity">{{ $jumlah_pesanan }}</span> 
+                                    @endif
+                                    <i class="ti-truck"></i>
                                 </a>
                             </div>
                             <div class="cart" style="padding-left: 10px;">
                                 <a href="{{ route('toko.akun') }}" id="header-cart-btn">
                                     <i class="ti-user"></i>
                                 </a>
+                            </div>
+                            <div class="cart" style="padding-left: 10px;">
+                                <a onclick="event.preventDefault();document.getElementById('logout-form').submit()" 
+                                   id="header-cart-btn">
+                                    Keluar
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}"
+                                    method="POST" style="display: none">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -32,10 +59,8 @@
             <div class="row h-100">
                 <div class="col-12 d-md-flex justify-content-between">
                     <div class="header-social-area">
-                        <a href="#"><span class="karl-level">Share</span> <i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="{{ $contact->facebook }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="{{ $contact->instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </div>
                     <div class="main-menu-area">
                         <nav class="navbar navbar-expand-lg align-items-start">
@@ -46,8 +71,8 @@
                                 <ul class="navbar-nav animated" id="nav">
                                     <li class="nav-item active"><a class="nav-link" href="{{ route('toko./') }}">Home</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{ route('toko.produk') }}">Produk</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Tentang Kami</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Promo</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('toko.promo') }}">Promo</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('toko.tentang_kami') }}">Tentang Kami</a></li>
                                 </ul>
                             </div>
                         </nav>

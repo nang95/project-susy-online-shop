@@ -30,4 +30,24 @@ class Produk extends Model
     public function variasi(){
         return $this->hasMany(Variasi::class);
     }
+
+    public function promoPrice($produk_id, $harga){
+        $event = EventProduk::where('produk_id', $produk_id)->first();
+
+        if ($event != null) {
+            return $event->harga_promo;
+        }
+
+        return $harga;
+    }
+
+    public function isPromo($produk_id){
+        $event = EventProduk::where('produk_id', $produk_id)->first();
+
+        if ($event != null) {
+            return true;
+        }
+
+        return false;
+    }
 }

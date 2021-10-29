@@ -7,10 +7,13 @@ Route::namespace('Auth')->group(function(){
     Route::post('login', 'LoginController@login')->name('login.login');
     Route::get('daftar', 'RegisterController@index')->name('daftar');
     Route::post('daftar', 'RegisterController@insert')->name('daftar.insert');
+    Route::post('logout', 'LoginController@logout')->name('logout');
 });
 
 Route::middleware('auth')->group(function(){
-    Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
+    Route::get('/', function(){})->middleware('checkUserLevel')->name('checkUserLevel');
+
+    Route::prefix('/admin')->name('admin.')->middleware('admin')->namespace('Admin')->group(function(){
         Route::get('/', 'DashboardController@index')->name('/');
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     
@@ -79,7 +82,7 @@ Route::middleware('auth')->group(function(){
         Route::put('kontak', 'KontakController@update')->name('kontak.update');
     });
 
-    Route::prefix('/toko')->name('toko.')->namespace('Web')->group(function(){
+    Route::prefix('/toko')->name('toko.')->middleware('pelanggan')->namespace('Web')->group(function(){
         Route::get('keranjang', 'KeranjangController@index')->name('keranjang');
         Route::post('keranjang', 'KeranjangController@insert')->name('keranjang.insert');
         Route::delete('keranjang', 'KeranjangController@delete')->name('keranjang.delete');
@@ -89,6 +92,10 @@ Route::middleware('auth')->group(function(){
 
         Route::get('akun', 'AkunController@index')->name('akun');
         Route::put('akun', 'AkunController@update')->name('akun.update');
+
+        Route::get('pemesanan', 'PemesananController@index')->name('pemesanan');
+        Route::post('pemesanan/konfirmasi', 'PemesananController@konfirmasi')->name('pemesanan.konfirmasi');
+        Route::get('pemesanan/detail/{pemesanan}', 'DetailPemesananController@index')->name('pemesanan.detail');
     });
 });
 
@@ -98,6 +105,11 @@ Route::prefix('/toko')->name('toko.')->namespace('Web')->group(function(){
 
     Route::get('produk', 'ProdukController@index')->name('produk');
     Route::get('produk/detail/{produk}', 'ProdukController@detail')->name('produk.detail');
+
+    Route::get('promo', 'PromoController@index')->name('promo');
+    Route::get('promo/detail/{promo}', 'PromoController@detail')->name('promo.detail');
+    
+    Route::get('tentang_kami', 'TentangKamiController@index')->name('tentang_kami');
 });
 
 

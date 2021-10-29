@@ -14,4 +14,18 @@ class Pemesanan extends Model
     public function detailPemesanan(){
         return $this->hasMany(DetailPemesanan::class);
     }
+
+    public function getStatus($status){
+        switch ($status) {
+            case 0:
+                return "Sedang Dikemas";
+                break;
+            case 1:
+                return "Sedang Dikirim";
+                break;
+            case 2:
+                return "Sudah Diterima";
+                break;
+        }
+    }
 }

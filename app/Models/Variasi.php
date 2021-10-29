@@ -18,4 +18,8 @@ class Variasi extends Model
     public function pelangganKeranjang(){
         return $this->hasMany(PelangganKeranjang::class);
     }
+
+    public function detailPemesanan(){
+        return $this->hasMay(DetailPemesanan::class);
+    }
 }

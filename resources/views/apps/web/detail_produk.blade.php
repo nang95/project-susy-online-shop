@@ -48,17 +48,24 @@
 
                         <h4 class="title"><a href="#">{{ $produk->nama }}</a></h4>
 
-                        <h4 class="price">Rp. {{ number_format($produk->harga) }}</h4>
+                        <h4 class="price">
+                            Rp.{{ number_format($produk->promoPrice($produk->id, $produk->harga)) }} 
+                            @if ($produk->isPromo($produk->id))
+                            <span style="text-decoration: line-through;">
+                                {{ number_format($produk->harga) }}
+                            </span>                                            
+                            @endif    
+                        </h4>
 
                         {{-- <p class="available">Available: <span class="text-muted">In Stock</span></p> --}}
 
-                        <div class="single_product_ratings mb-15">
+                        {{-- <div class="single_product_ratings mb-15">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </div>
+                        </div> --}}
 
                         {{-- <div class="widget size mb-50">
                             <h6 class="widget-title">Size</h6>
@@ -74,33 +81,39 @@
                             </div>
                         </div> --}}
                         
-                        <div class="widget size mb-50">
-                            <h6 class="widget-title">Tipe</h6>
-                            <div class="row">
-                                @foreach ($variasi as $item)
-                                <div class="col-3 desc-detail-variasi">
-                                    <div class="form-check">
-                                        <input name="variasi_id[]" 
-                                        class="form-check-input" 
-                                        type="radio" 
-                                        value="{{ $item->id }}" id="{{ $item->id }}">
-                                        <label class="form-check-label" for="{{ $item->id }}">
-                                        {{ $item->nama }}
-                                        </label>
-                                    </div>  
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
+                      
 
                         <!-- Add to Cart Form -->
-                        <form class="cart clearfix mb-50 d-flex" method="post">
+                        <form action="{{ route('toko.keranjang.insert') }}" method="post">
+                            @csrf @method('POST')
+                            <div class="widget size mb-50">
+                                <h6 class="widget-title">Tipe</h6>
+                                <div class="row">
+                                    @foreach ($variasi as $item)
+                                    <div class="col-3 desc-detail-variasi">
+                                        <div class="form-check">
+                                            <input name="variasi_id" 
+                                            class="form-check-input" 
+                                            type="radio" 
+                                            value="{{ $item->id }}" id="{{ $item->id }}">
+                                            <label class="form-check-label" for="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                            </label>
+                                        </div>  
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="cart clearfix mb-50 d-flex">
                             <div class="quantity">
                                 <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
+
+                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="jumlah" value="1">
+
                                 <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                             </div>
-                            <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Add to cart</button>
+                            <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Tambah ke Keranjang</button>
+                            </div>
                         </form>
 
                         <div id="accordion" role="tablist">

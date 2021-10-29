@@ -14,4 +14,8 @@ class DetailPemesanan extends Model
     public function pemesanan(){
         return $this->belongsTo(Pemesanan::class);
     }
+
+    public function variasi(){
+        return $this->belongsTo(Variasi::class);
+    }
 }

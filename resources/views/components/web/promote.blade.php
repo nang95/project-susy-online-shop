@@ -5,8 +5,10 @@
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="offer-content-area wow fadeInUp" data-wow-delay="1s">
                     <h2>{{ $event->nama }} <span class="karl-level">Hot</span></h2>
-                    <p>* Free shipping until 25 Dec 2017</p>
-                    <a href="#" class="btn karl-btn mt-30">Shop Now</a>
+                    <form action="{{ route('toko.promo') }}" method="GET">
+                        <input type="hidden" name="nama" value="{{ $event->nama }}">
+                        <button href="{{ route('toko.produk') }}" class="btn karl-btn mt-30">Belanja Sekarang</button>
+                    </form>
                 </div>
             </div>
         </div>

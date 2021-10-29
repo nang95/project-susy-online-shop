@@ -10,14 +10,13 @@ class CheckoutController extends Controller
 {
     public function index(Request $request){
         $contact = Contact::first();
-        $pelanggan = Pelanggan::where('user_id', auth()->user()->id)->first();
         $product_collect = $request->product_collect;
-        
         $keranjang = PelangganKeranjang::whereIn('id', explode(';', $product_collect))->get();
+        $pelanggan = Pelanggan::where('user_id', auth()->user()->id)->first();
 
         return view('apps.web.checkout')->with('keranjang', $keranjang)
-                                        ->with('contact', $contact)
-                                        ->with('pelanggan', $pelanggan);
+                                        ->with('pelanggan', $pelanggan)
+                                        ->with('contact', $contact);
     }
 
     public function insert(Request $request){

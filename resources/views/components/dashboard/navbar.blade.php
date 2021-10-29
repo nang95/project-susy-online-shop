@@ -7,9 +7,13 @@
         <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
         <ul class="navbar-nav  justify-content-end">
           <li class="nav-item d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+            <a onclick="event.preventDefault();document.getElementById('logout-form').submit()" class="nav-link text-body font-weight-bold px-0">
               <i class="fa fa-user me-sm-1"></i>
               <span class="d-sm-inline d-none">Sign Out</span>
+              <form id="logout-form" action="{{ route('logout') }}"
+                  method="POST" style="display: none">
+                  @csrf
+              </form>
             </a>
           </li>
         </ul>
