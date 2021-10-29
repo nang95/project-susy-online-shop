@@ -11,6 +11,10 @@ class Pemesanan extends Model
 
     protected $guarded = ['id'];
 
+    public function pelanggan(){
+        return $this->belongsTo(Pelanggan::class);
+    }
+
     public function detailPemesanan(){
         return $this->hasMany(DetailPemesanan::class);
     }

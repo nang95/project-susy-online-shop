@@ -34,7 +34,10 @@ class EventProdukController extends Controller
      */
     public function create(Event $event)
     {
-        $produk = Produk::orderBy('id', 'desc')->get();
+        $produk = Produk::whereNotIn('id', function($query){
+            $query->select('produk_id')->from('event_produks');
+        })->get();
+
         return view('apps.dashboard.admin.event-produk.create')->with('event', $event)
                                                                ->with('produk', $produk);
     }
@@ -63,7 +66,10 @@ class EventProdukController extends Controller
      */
     public function edit(EventProduk $event_produk, Event $event)
     {
-        $produk = Produk::orderBy('id', 'desc')->get();
+        $produk = Produk::whereNotIn('id', function($query){
+            $query->select('produk_id')->from('event_produks');
+        })->get();
+        
         return view('apps.dashboard.admin.event-produk.edit')->with('event', $event)
                                                              ->with('event_produk', $event_produk)
                                                              ->with('produk', $produk);

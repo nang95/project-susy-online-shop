@@ -25,4 +25,11 @@ class PemesananController extends Controller
                                                            ->with('skipped', $skipped)
                                                            ->with('q_nama', $q_nama);
     }
+
+    public function delete(Request $request){
+        $pemesanan = Pemesanan::findOrFail($request->id);
+
+        $pemesanan->delete();
+        return redirect()->back();
+    }
 }
