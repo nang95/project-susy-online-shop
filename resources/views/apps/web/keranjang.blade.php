@@ -24,22 +24,17 @@
                                 @endphp
                                 @foreach ($keranjang as $item)
                                 @php
-                                    $total += $item->variasi->produk->promoPrice($item->variasi->produk_id, $item->variasi->produk->harga) * $item->jumlah;   
+                                    $total += $item->variasi->produk->harga * $item->jumlah;   
                                 @endphp
                                 <tr>
                                     <td class="cart_product_img d-flex align-items-center">
                                         <a href="http://">
                                             <img src="{{ asset('foto_produk') }}/{{ $item->variasi->foto }}" style="width: 100px;height:100px;object-fit:cover" alt="Product">
                                         </a>
-                                        <h6>{{ $item->variasi->produk->nama }} ({{ $item->variasi->nama }})</h6>
+                                        <h6>{{ $item->variasi->produk->nama }} ({{ $item->variasi->nama }}) - (Ukuran {{ $item->variasi->ukuran }})</h6>
                                     </td>
                                     <td class="price">
-                                        Rp. {{ number_format($item->variasi->produk->promoPrice($item->variasi->produk_id, $item->variasi->produk->harga)) }}
-                                        @if ($item->variasi->produk->isPromo($item->variasi->produk_id))
-                                        <span style="text-decoration: line-through;">
-                                            {{ number_format($item->variasi->produk->harga) }}
-                                        </span>                                            
-                                        @endif 
+                                        Rp. {{ number_format($item->variasi->produk->harga) }}
                                     </td>
                                     <td class="qty">
                                         <div class="quantity">
@@ -47,13 +42,13 @@
                                         </div>
                                     </td>
                                     <td class="total_price">
-                                        Rp. {{ number_format($item->variasi->produk->promoPrice($item->variasi->produk->id, $item->variasi->produk->harga) * $item->jumlah) }}
+                                        Rp. {{ number_format($item->variasi->produk->harga * $item->jumlah) }}
                                     </td>
                                     <td style="padding-bottom: 40px;">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" 
                                             data-id="{{ $item->id }}" 
-                                            data-harga="{{ $item->variasi->produk->promoPrice($item->variasi->produk->id, $item->variasi->produk->harga) * $item->jumlah }}"
+                                            data-harga="{{ $item->variasi->produk->harga * $item->jumlah }}"
                                             data-jumlah="{{ $item->jumlah }}">
                                         </div>
                                     </td>

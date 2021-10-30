@@ -18,7 +18,6 @@
                         <li><a href="{{ route('toko./') }}">Beranda</a></li>
                         <li><a href="{{ route('toko.tentang_kami') }}">Tentang Kami</a></li>
                         <li><a href="{{ route('toko.produk') }}">Produk</a></li>
-                        <li><a href="{{ route('toko.promo') }}">Promo</a></li>
                     </ul>
                 </div>
             </div>

@@ -21,6 +21,8 @@ class PromoController extends Controller
                 $event->select('id')->from('events')->where('tanggal_dari', '<=', date('Y-m-d'))
                                                     ->where('tanggal_sampai', '>=', date('Y-m-d'));
             });
+        })->whereIn('id', function($query){
+            $query->select('produk_id')->from('variasis');
         });
 
         if (!empty($kategori_ids)) {

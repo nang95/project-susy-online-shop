@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pemesanan;
+use Session;
 
 class PemesananController extends Controller
 {
@@ -24,6 +25,18 @@ class PemesananController extends Controller
         return view('apps.dashboard.admin.pemesanan.index')->with('pemesanan', $pemesanan)
                                                            ->with('skipped', $skipped)
                                                            ->with('q_nama', $q_nama);
+    }
+
+    public function edit(Pemesanan $pemesanan){
+        return view('apps.dashboard.admin.pemesanan.edit')->with('pemesanan', $pemesanan);
+    }
+
+    public function update(Request $request){
+        $pemesanan = Pemesanan::findOrFail($request->id);
+
+        $pemesanan->update($request->all());
+        Session::flash('flash_message', 'Data telah disimpan');
+        return redirect()->route('admin.pemesanan');
     }
 
     public function delete(Request $request){

@@ -38,46 +38,11 @@
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </div> --}}
                                     <h5 class="price">
-                                        Rp. {{ number_format($item->promoPrice($item->id, $item->harga)) }}
-                                        @if ($item->isPromo($item->id))
-                                        <span style="text-decoration: line-through;">
-                                            {{ number_format($item->harga) }}
-                                        </span>                                            
-                                        @endif    
+                                        Rp. {{ number_format($item->harga) }}  
                                     </h5>
-                                    <p>{{ \Illuminate\Support\Str::limit($item->deskripsi, 100) }}</p>
-                                    <a href="#">Selengkapnya</a>
+                                    <p>{{ \Illuminate\Support\Str::limit($item->deskripsi, 200) }}</p>
+                                    <a href="{{ route('toko.produk.detail', $item->id) }}" class="add-to-cart-btn">Selengkapnya</a>
                                 </div>
-                                <form action="{{ route('toko.keranjang.insert') }}" method="post">
-                                    @csrf @method('POST')
-                                        @foreach ($item->variasi()->get() as $variasi)
-                                            <div class="desc-detail-variasi" style="display: block !important">
-                                                <div class="form-check">
-                                                    <input name="variasi_id" 
-                                                    class="form-check-input" 
-                                                    type="radio" 
-                                                    value="{{ $variasi->id }}" id="{{ $variasi->id }}"
-                                                    required>
-                                                    <label class="form-check-label" for="{{ $variasi->id }}">
-                                                    {{ $variasi->nama }}
-                                                    </label>
-                                                </div>  
-                                            </div>
-                                        @endforeach
-                                    <div class="cart">
-                                        <div class="quantity">
-                                            <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-
-                                            <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="jumlah" value="1">
-
-                                            <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                        </div>
-                                        <button type="submit" class="cart-submit">Tambah Ke keranjang</button>
-                                        <div class="modal_pro_wishlist">
-                                            <a href="wishlist.html" target="_blank"><i class="ti-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>

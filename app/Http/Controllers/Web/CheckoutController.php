@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Contact, PelangganKeranjang, Pelanggan, Pemesanan, DetailPemesanan};
+use App\Models\{Contact, PelangganKeranjang, Pelanggan, Pemesanan, Variasi, DetailPemesanan};
 
 class CheckoutController extends Controller
 {
@@ -27,21 +27,37 @@ class CheckoutController extends Controller
         $pemesanan = Pemesanan::create([
             'pelanggan_id' => $pelanggan->id,
             'tanggal_pemesanan' => date('Y-m-d'),
-            'total_pembayaran' => $request->total_pembayaran
+            'total_pembayaran' => $request->total_pembayaran,
+            'status' => 1,
+        ]);
+
+        $pelanggan->update([
+            'provinsi' => $request->provinsi,
+            'kabupaten' => $request->kabupaten,
+            'kecamatan' => $request->kecamatan,
+            'alamat_lengkap' => $request->alamat_lengkap,
+            'kode_pos' => $request->kode_pos,
+            'no_telfon' => $request->no_telfon
         ]);
 
         foreach ($keranjang_ids as $key => $item) {
             $keranjang = PelangganKeranjang::findOrFail($item);
-
+            
             $detail_pemesanan = DetailPemesanan::create([
                 'pemesanan_id' => $pemesanan->id,
                 'variasi_id' => $keranjang->variasi_id,
                 'jumlah' => $keranjang->jumlah,
             ]);
+
+            $variasi = Variasi::findOrFail($keranjang->variasi_id);
+
+            $variasi->update([
+                'stok' => $variasi->stok - $keranjang->jumlah
+            ]);
             
             $keranjang->delete();
         }
     
-        return redirect()->route('toko./');
+        return redirect()->route('toko.pemesanan');
     }
 }

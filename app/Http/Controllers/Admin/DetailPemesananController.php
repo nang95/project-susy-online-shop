@@ -10,7 +10,7 @@ class DetailPemesananController extends Controller
 {
     public function index(Pemesanan $pemesanan, Request $request){
         $q_nama = $request->q_nama;
-        $detail_pemesanan = DetailPemesanan::orderBy('id', 'desc');
+        $detail_pemesanan = DetailPemesanan::where('pemesanan_id', $pemesanan->id)->orderBy('id', 'desc');
 
         if (!empty($q_nama)) {
             $detail_pemesanan->whereHas('pelanggan', function($query) use($q_nama){

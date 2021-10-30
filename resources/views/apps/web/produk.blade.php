@@ -42,11 +42,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-                </form>
-
+                        <button type="submit" name="addtocart" class="btn cart-submit d-block">Cari</button>     
+                    </form>
+                </div>
+                    
                 <div class="col-12 col-md-8 col-lg-9">
                     <div class="shop_grid_product_area">
                         <div class="row">
@@ -63,13 +62,7 @@
                                 </div>
                                 <!-- Product Description -->
                                 <div class="product-description">
-                                    <h4 class="product-price">Rp.{{ number_format($item->promoPrice($item->id, $item->harga)) }} 
-                                        @if ($item->isPromo($item->id))
-                                        <span style="text-decoration: line-through;">
-                                            {{ number_format($item->harga) }}
-                                        </span>                                            
-                                        @endif
-                                        </h5>
+                                    <h4 class="product-price">Rp.{{ number_format($item->harga) }} </h5>
                                     </h4>
                                     <p>{{ $item->nama }}</p>
                                     <!-- Add to Cart -->
@@ -81,13 +74,7 @@
                     </div>
                     
                     <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination pagination-sm">
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                            </ul>
-                        </nav>
+                        {{ $produk->appends(['kategori_id' => $kategori_id])->links() }}
                     </div>
 
                 </div>

@@ -71,7 +71,6 @@
                                 <ul class="navbar-nav animated" id="nav">
                                     <li class="nav-item active"><a class="nav-link" href="{{ route('toko./') }}">Home</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{ route('toko.produk') }}">Produk</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('toko.promo') }}">Promo</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{ route('toko.tentang_kami') }}">Tentang Kami</a></li>
                                 </ul>
                             </div>

@@ -34,6 +34,7 @@
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ukuran</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stok</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
@@ -54,6 +55,7 @@
                   @foreach ($variasi as $data_variasi)
                   <tr>
                     <td>{{ $data_variasi->nama }}</td>
+                    <td>{{ $data_variasi->ukuran }}</td>
                     <td>
                       <a href="{{ asset('foto_produk') }}/{{$data_variasi->foto}}">Download</a>
                     </td>                    

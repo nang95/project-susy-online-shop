@@ -71,6 +71,8 @@ Route::middleware('auth')->group(function(){
     
         // pemesanan
         Route::get('pemesanan', 'pemesananController@index')->name('pemesanan');
+        Route::get('pemesanan/edit/{pemesanan}', 'PemesananController@edit')->name('pemesanan.edit');
+        Route::put('pemesanan', 'PemesananController@update')->name('pemesanan.update');
         Route::delete('pemesanan', 'pemesananController@delete')->name('pemesanan.delete');
     
         // Detail Pemesanan

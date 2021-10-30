@@ -111,7 +111,7 @@ class VariasiController extends Controller
             $image_resize = Image::make('foto_produk/'. $file_name);   
         }
 
-        $variasi->update($request->all());
+        $variasi->update($data);
         
         Session::flash('flash_message', 'Data telah disimpan');
         return redirect()->route('admin.produk.variasi', $request->produk_id);

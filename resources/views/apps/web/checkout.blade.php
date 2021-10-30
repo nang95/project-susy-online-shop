@@ -25,23 +25,23 @@
                                 </div>
                                 <div class="col-4 mb-3">
                                     <label for="kabupaten">Kabupaten</label>
-                                    <input type="text" class="form-control" id="kabupaten" name="kabupaten" value="{{ $pelanggan->kabupaten }}">
+                                    <input type="text" class="form-control" id="kabupaten" name="kabupaten" value="{{ $pelanggan->kabupaten }}" required>
                                 </div>
                                 <div class="col-4 mb-3">
                                     <label for="kecamatan">Kecamatan</label>
-                                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{ $pelanggan->kecamatan }}">
+                                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{ $pelanggan->kecamatan }}" required>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <label for="alamat_lengkap">Alamat Lengkap</label>
-                                    <textarea type="text" class="form-control" name="alamat_lengkap" id="alamat_lengkap">{{ $pelanggan->alamat_lengkap }}</textarea>
+                                    <textarea type="text" class="form-control" name="alamat_lengkap" id="alamat_lengkap" required>{{ $pelanggan->alamat_lengkap }}</textarea>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <label for="kode_pos">Kode Pos <span>*</span></label>
-                                    <input type="text" class="form-control" id="kode_pos" name="kode_pos" value="{{ $pelanggan->kode_pos }}">
+                                    <input type="text" class="form-control" id="kode_pos" name="kode_pos" value="{{ $pelanggan->kode_pos }}" required>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <label for="no_telfon">No. HP <span>*</span></label>
-                                    <input type="number" class="form-control" id="no_telfon" name="no_telfon" min="0" value="{{ $pelanggan->no_telfon }}">
+                                    <input type="number" class="form-control" id="no_telfon" name="no_telfon" min="0" value="{{ $pelanggan->no_telfon }}" required>
                                 </div>
                             </div>
                         </form>
@@ -65,12 +65,12 @@
                                 @endphp
                                 @foreach ($keranjang as $item)
                                     @php
-                                        $total += $item->variasi->produk->promoPrice($item->variasi->produk->id, $item->variasi->produk->harga) * $item->jumlah;   
+                                        $total += $item->variasi->produk->harga * $item->jumlah;   
                                     @endphp
                                     <li>
                                         <input type="hidden" name="keranjang_ids[]" value="{{ $item->id }}">
                                         <span>{{ $item->variasi->produk->nama }} ({{ $item->variasi->nama }})</span> 
-                                        <span>Rp. {{ number_format($item->variasi->produk->promoPrice($item->variasi->produk->id, $item->variasi->produk->harga) * $item->jumlah) }} x {{ $item->jumlah }}</span></li>
+                                        <span>Rp. {{ number_format($item->variasi->produk->harga * $item->jumlah) }} x {{ $item->jumlah }}</span></li>
                                 @endforeach
                                 <li><span>Total</span> <span>Rp. {{ number_format($total) }}</span></li>
                                 <input type="hidden" value="{{ $total }}" name="total_pembayaran">

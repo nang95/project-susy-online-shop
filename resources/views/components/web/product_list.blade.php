@@ -34,12 +34,7 @@
                     </div>
                     <div class="product-description">
                         <h4 class="product-price">
-                            Rp.{{ number_format($item->promoPrice($item->id, $item->harga)) }} 
-                            @if ($item->isPromo($item->id))
-                            <span style="text-decoration: line-through;">
-                                {{ number_format($item->harga) }}
-                            </span>                                            
-                            @endif    
+                            Rp.{{ number_format($item->harga) }} 
                         </h4>
                         <p>{{ $item->nama }}</p>    
                         <a href="{{ route('toko.produk.detail', $item->id) }}" class="add-to-cart-btn">Lihat Selengkapnya</a>

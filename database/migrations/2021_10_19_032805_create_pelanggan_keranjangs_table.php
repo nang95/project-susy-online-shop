@@ -15,8 +15,8 @@ class CreatePelangganKeranjangsTable extends Migration
     {
         Schema::create('pelanggan_keranjangs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('produk_id');
-            $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
+            $table->unsignedBigInteger('variasi_id');
+            $table->foreign('variasi_id')->on('variasis')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('pelanggan_id');
             $table->foreign('pelanggan_id')->references('id')->on('pelanggans')->onDelete('cascade');
             $table->integer('jumlah');

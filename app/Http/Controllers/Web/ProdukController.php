@@ -15,7 +15,9 @@ class ProdukController extends Controller
 
         $kategori = Kategori::get();
         $contact = Contact::first();
-        $produk = Produk::orderBy('id', 'desc');
+        $produk = Produk::whereIn('id', function($query){
+            $query->select('produk_id')->from('variasis');
+        })->orderBy('id', 'desc');
 
         if (!empty($kategori_ids)) {
             $produk->whereIn('id', function($query) use($kategori_ids){
@@ -41,11 +43,13 @@ class ProdukController extends Controller
     }
 
     public function detail(Produk $produk){
-        $variasi = Variasi::where('produk_id', $produk->id)->get();
+        $variasi = Variasi::where('produk_id', $produk->id)->where('stok', '>=', 1)->get();
+        $variasi_galeri = Variasi::groupBy('nama')->where('produk_id', $produk->id)->get();
         $contact = Contact::first();
 
         return view('apps.web.detail_produk')->with('produk', $produk)
                                              ->with('variasi', $variasi)
+                                             ->with('variasi_galeri', $variasi_galeri)
                                              ->with('contact', $contact);
     }
 }

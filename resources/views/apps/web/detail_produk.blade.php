@@ -16,7 +16,7 @@
                                 @php
                                     $slide_no = 0;
                                 @endphp
-                                @foreach ($variasi as $item)
+                                @foreach ($variasi_galeri as $item)
                                     @php
                                         $slide_no += 1;
                                     @endphp
@@ -31,7 +31,7 @@
                                         <img class="d-block w-100" src="{{ asset('foto_produk') }}/{{ $produk->foto }}" alt="First slide">
                                     </a>
                                 </div>
-                                @foreach ($variasi as $item)
+                                @foreach ($variasi_galeri as $item)
                                     <div class="carousel-item">
                                         <a class="gallery_img" href="{{ asset('foto_produk') }}/{{ $item->foto }}">
                                             <img class="d-block w-100" src="{{ asset('foto_produk') }}/{{ $item->foto }}" alt="Second slide">
@@ -49,39 +49,8 @@
                         <h4 class="title"><a href="#">{{ $produk->nama }}</a></h4>
 
                         <h4 class="price">
-                            Rp.{{ number_format($produk->promoPrice($produk->id, $produk->harga)) }} 
-                            @if ($produk->isPromo($produk->id))
-                            <span style="text-decoration: line-through;">
-                                {{ number_format($produk->harga) }}
-                            </span>                                            
-                            @endif    
+                            Rp.{{ number_format($produk->harga) }} 
                         </h4>
-
-                        {{-- <p class="available">Available: <span class="text-muted">In Stock</span></p> --}}
-
-                        {{-- <div class="single_product_ratings mb-15">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </div> --}}
-
-                        {{-- <div class="widget size mb-50">
-                            <h6 class="widget-title">Size</h6>
-                            <div class="widget-desc">
-                                <ul>
-                                    <li><a href="#">32</a></li>
-                                    <li><a href="#">34</a></li>
-                                    <li><a href="#">36</a></li>
-                                    <li><a href="#">38</a></li>
-                                    <li><a href="#">40</a></li>
-                                    <li><a href="#">42</a></li>
-                                </ul>
-                            </div>
-                        </div> --}}
-                        
-                      
 
                         <!-- Add to Cart Form -->
                         <form action="{{ route('toko.keranjang.insert') }}" method="post">
@@ -97,7 +66,7 @@
                                             type="radio" 
                                             value="{{ $item->id }}" id="{{ $item->id }}">
                                             <label class="form-check-label" for="{{ $item->id }}">
-                                            {{ $item->nama }}
+                                            {{ $item->nama }} ({{ $item->ukuran }})
                                             </label>
                                         </div>  
                                     </div>
@@ -120,41 +89,13 @@
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingOne">
                                     <h6 class="mb-0">
-                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Information</a>
+                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Deskripsi Produk</a>
                                     </h6>
                                 </div>
 
                                 <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</p>
-                                        <p>Approx length 66cm/26" (Based on a UK size 8 sample) Mixed fibres</p>
-                                        <p>The Model wears a UK size 8/ EU size 36/ US size 4 and her height is 5'8"</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingTwo">
-                                    <h6 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Cart Details</a>
-                                    </h6>
-                                </div>
-                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos nemo, nulla quaerat. Quibusdam non, eos, voluptatem reprehenderit hic nam! Laboriosam, sapiente! Praesentium.</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magnam laborum eaque.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingThree">
-                                    <h6 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">shipping &amp; Returns</a>
-                                    </h6>
-                                </div>
-                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint repudiandae suscipit ab soluta delectus voluptate, vero vitae, tempore maxime rerum iste dolorem mollitia perferendis distinctio. Quibusdam laboriosam rerum distinctio. Repudiandae fugit odit, sequi id!</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae qui maxime consequatur laudantium temporibus ad et. A optio inventore deleniti ipsa.</p>
+                                        <p>{{ $produk->deskripsi }}</p>
                                     </div>
                                 </div>
                             </div>

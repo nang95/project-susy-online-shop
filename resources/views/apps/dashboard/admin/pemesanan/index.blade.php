@@ -60,6 +60,9 @@
                       <a href="{{ route('admin.pemesanan.detail_pemesanan', $data_pemesanan->id) }}">
                         <button class="text-secondary font-weight-bold text-xs" style="background: none; border: 0px">Detail</button>
                       </a>
+                      <a href="{{ route('admin.pemesanan.edit', $data_pemesanan->id) }}">
+                        <button class="text-secondary font-weight-bold text-xs" style="background: none; border: 0px">Edit</button>
+                      </a>
                       <form onsubmit="deleteThis(event)" action="{{ route('admin.pemesanan.delete') }}" method="POST" style="display:inline-block">
                         {{ csrf_field() }} {{ method_field('DELETE') }}
                         <input type="hidden" name="id" value="{{ $data_pemesanan->id }}">
