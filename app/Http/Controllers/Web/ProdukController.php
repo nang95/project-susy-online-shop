@@ -30,16 +30,14 @@ class ProdukController extends Controller
                    ->where('harga', '<=', $harga_sampai);
         }
 
-        $produk = $produk->paginate(30);
-        $skipped = ($produk->perPage() * $produk->currentPage()) - $produk->perPage();
+        $produk = $produk->get();
 
         return view('apps.web.produk')->with('kategori', $kategori)
                                       ->with('produk', $produk)
                                       ->with('kategori_ids', $kategori_ids)
                                       ->with('harga_dari', $harga_dari)
                                       ->with('harga_sampai', $harga_sampai)
-                                      ->with('contact', $contact)
-                                      ->with('skipped', $skipped);
+                                      ->with('contact', $contact);
     }
 
     public function detail(Produk $produk){

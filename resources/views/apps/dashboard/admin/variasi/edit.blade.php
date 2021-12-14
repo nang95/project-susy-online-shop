@@ -39,7 +39,7 @@
                 <div class="mb-3 d-flex justify-content-between">
                     <div>
                         <a href="{{ route('admin.produk') }}">
-                            <button class="btn btn-sm btn-danger" style="padding-left: 10px; padding-right: 10px">Kembali</button>                        
+                            <button type="button" class="btn btn-sm btn-danger" style="padding-left: 10px; padding-right: 10px">Kembali</button>                        
                         </a>
                     </div>
                     <div>

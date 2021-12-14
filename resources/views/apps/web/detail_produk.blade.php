@@ -81,7 +81,7 @@
 
                                 <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                             </div>
-                            <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Tambah ke Keranjang</button>
+                            <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block" style="width: 200px !important">Tambah ke Keranjang</button>
                             </div>
                         </form>
 

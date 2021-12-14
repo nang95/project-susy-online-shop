@@ -12,7 +12,7 @@
                             <div class="widget catagory mb-50">
                                 <!--  Side Nav  -->
                                 <div class="nav-side-menu">
-                                    <h6 class="mb-0">CARI BERDASARKAN KATEGORI</h6>
+                                    <h6 class="mb-0">CARI KATEGORI</h6>
                                     <div class="menu-list">
                                         <ul id="menu-content2" class="menu-content collapse out">
                                             <!-- Single Item -->
@@ -71,10 +71,6 @@
                             </div>
                             @endforeach
                         </div>
-                    </div>
-                    
-                    <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
-                        {{ $produk->appends(['kategori_id' => $kategori_id])->links() }}
                     </div>
 
                 </div>
