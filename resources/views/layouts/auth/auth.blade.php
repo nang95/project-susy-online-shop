@@ -50,7 +50,7 @@
     </style>
 </head>
 <body>
-    <div class="auth-wrapper" style="background: url('{{ asset('/img/bg-auth-1.png') }}')">
+    <div class="auth-wrapper" style="background: url('{{ asset('/img/bg-auth.png') }}')">
         @yield('content')
     </div>         
 

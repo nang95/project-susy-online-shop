@@ -39,6 +39,7 @@
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Hp</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat Lengkap</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>

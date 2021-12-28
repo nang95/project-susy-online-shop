@@ -9,7 +9,7 @@
           <li class="nav-item d-flex align-items-center">
             <a onclick="event.preventDefault();document.getElementById('logout-form').submit()" class="nav-link text-body font-weight-bold px-0">
               <i class="fa fa-user me-sm-1"></i>
-              <span class="d-sm-inline d-none">Sign Out</span>
+              <span class="d-sm-inline d-none">Keluar</span>
               <form id="logout-form" action="{{ route('logout') }}"
                   method="POST" style="display: none">
                   @csrf

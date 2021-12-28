@@ -3,6 +3,7 @@
 @section('breadcrumbs')
 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
   <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Master</a></li>
+  <li class="breadcrumb-item text-sm text-dark active" aria-current="page"><a href="{{ route('admin.pemesanan') }}">Pemesanan</a></li>
   <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Detail Pemesanan</li>
 </ol>
 <h6 class="font-weight-bolder mb-0">Detail Pemesanan</h6>
@@ -16,12 +17,46 @@
 @endif
 <div class="row">
     <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header pb-0">
+          <h6>Detail Pelanggan</h6>
+        </div>
+        <div class="card-body pl-2 pr-2 pt-0 pb-2">
+          <div class="row">
+            <div class="col-2">Nama</div>
+            <div class="col-8">: {{ $pelanggan->nama }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2">Provinsi</div>
+            <div class="col-8">: {{ $pelanggan->provinsi }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2">Kabupaten</div>
+            <div class="col-8">: {{ $pelanggan->kabupaten }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2">Kecamatan</div>
+            <div class="col-8">: {{ $pelanggan->kecamatan }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2">No. Telp</div>
+            <div class="col-8">: {{ $pelanggan->no_telfon }}</div>
+          </div>
+          <div class="row">
+            <div class="col-2">Alamat Lengkap</div>
+            <div class="col-8">: {{ $pelanggan->alamat_lengkap }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
             <h6>Data Detail Pemesanan</h6>
             <div class="d-flex justify-content-between">
               <div></div>
-              <form action="{{ route('admin.pemesanan.detail_pemesanan', $pemesanan->id) }}" method="GET">
+              <form action="{{ route('admin.pemesanan.detail_pemesanan', [$pemesanan->id, $pelanggan->id]) }}" method="GET">
                 <input type="text" name="q_nama" class="form-control" placeholder="Cari Nama" value="{{ $q_nama }}">
               </form>
             </div>

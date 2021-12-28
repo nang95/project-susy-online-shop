@@ -12,9 +12,13 @@ class DashboardController extends Controller
         $produk = Produk::count();
         $pelanggan = Pelanggan::count();
         $pemesanan= Pemesanan::count();
+        $pemesanan_hari_ini = Pemesanan::where('tanggal_pemesanan', date('Y-m-d'))->limit(5)->get();
+        $pemesanan_terkirim = Pemesanan::where('status', 2)->limit(5)->get();
 
         return view('apps.dashboard.admin.dashboard')->with('produk', $produk)
                                                      ->with('pelanggan', $pelanggan)
+                                                     ->with('pemesanan_terkirim', $pemesanan_terkirim)
+                                                     ->with('pemesanan_hari_ini', $pemesanan_hari_ini)
                                                      ->with('pemesanan', $pemesanan);
     }
 }

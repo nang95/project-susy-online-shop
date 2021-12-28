@@ -76,7 +76,7 @@ Route::middleware('auth')->group(function(){
         Route::delete('pemesanan', 'pemesananController@delete')->name('pemesanan.delete');
     
         // Detail Pemesanan
-        Route::get('pemesanan/detail_pemesanan/{pemesanan}', 'DetailPemesananController@index')->name('pemesanan.detail_pemesanan');
+        Route::get('pemesanan/detail_pemesanan/{pemesanan}/{pelanggan}', 'DetailPemesananController@index')->name('pemesanan.detail_pemesanan');
         Route::get('pemesanan/detail_pemesanan/edit/{detail_pemesanan}/{pemesanan}', 'DetailPemesananController@edit')->name('pemesanan.detail_pemesanan.edit');
         Route::put('pemesanan/detail_pemesanan', 'DetailPemesananController@update')->name('pemesanan.detail_pemesanan.update');
         Route::delete('detail_pemesanan', 'DetailPemesananController@delete')->name('pemesanna.detail_pemesanan.delete');

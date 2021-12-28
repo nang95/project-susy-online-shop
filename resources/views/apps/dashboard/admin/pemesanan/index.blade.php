@@ -57,7 +57,7 @@
                     <td>{{ $data_pemesanan->getStatus($data_pemesanan->status) }}</td>
                     <td>Rp. {{ number_format($data_pemesanan->total_pembayaran) }}</td>
                     <td class="align-middle">
-                      <a href="{{ route('admin.pemesanan.detail_pemesanan', $data_pemesanan->id) }}">
+                      <a href="{{ route('admin.pemesanan.detail_pemesanan', [$data_pemesanan->id, $data_pemesanan->pelanggan_id]) }}">
                         <button class="text-secondary font-weight-bold text-xs" style="background: none; border: 0px">Detail</button>
                       </a>
                       <a href="{{ route('admin.pemesanan.edit', $data_pemesanan->id) }}">

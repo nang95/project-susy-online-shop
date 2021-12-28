@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Pemesanan, DetailPemesanan};
+use App\Models\{Pemesanan, Pelanggan, DetailPemesanan};
 
 class DetailPemesananController extends Controller
 {
-    public function index(Pemesanan $pemesanan, Request $request){
+    public function index(Pemesanan $pemesanan, Pelanggan $pelanggan, Request $request){
         $q_nama = $request->q_nama;
         $detail_pemesanan = DetailPemesanan::where('pemesanan_id', $pemesanan->id)->orderBy('id', 'desc');
 
@@ -23,6 +23,7 @@ class DetailPemesananController extends Controller
 
         return view('apps.dashboard.admin.detail_pemesanan.index')->with('pemesanan', $pemesanan)
                                                            ->with('detail_pemesanan', $detail_pemesanan)
+                                                           ->with('pelanggan', $pelanggan)
                                                            ->with('skipped', $skipped)
                                                            ->with('q_nama', $q_nama);
     }
