@@ -5,7 +5,9 @@
     <div class="checkout_area section_padding_100">
         <div class="container">
             <div class="row">
-
+                
+                <form action="{{ route('toko.checkout.insert') }}" method="POST">
+                    @csrf @method('POST')
                 <div class="col-12 col-md-6">
                     <div class="checkout_details_area mt-50 clearfix">
 
@@ -13,7 +15,6 @@
                             <h5>Alamat Pembeli</h5>
                         </div>
 
-                        <form action="#" method="post">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <label for="nama">Nama <span>*</span></label>
@@ -56,8 +57,6 @@
                             <p>Detail Pesanan</p>
                         </div>
 
-                        <form action="{{ route('toko.checkout.insert') }}" method="POST">
-                            @csrf @method('POST')
                             <ul class="order-details-form mb-4">
                                 <li><span>Produk</span> <span>Total</span></li>
                                 @php
@@ -77,11 +76,10 @@
                             </ul>
 
                             <button type="submit" class="btn karl-checkout-btn">Place Order</button>
-                        </form>
-                    </div>
+                        </div>
+                    </div>    
                 </div>
-
-            </div>
+            </form>
         </div>
     </div>
     @include('components.web.footer')

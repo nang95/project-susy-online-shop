@@ -5,7 +5,7 @@
                 <div class="col-12 col-lg-7">
                     <div class="top_single_area d-flex align-items-center">
                         <div class="top_logo">
-                            <a href=""><img src="{{ asset('img/core-img/logo.png') }}" alt=""></a>
+                            <a href=""><img src="{{ asset('img/logo.png') }}" style="width: 100px; height: 100px; object-fit: contain" alt=""></a>
                         </div>
                         <div class="header-cart-menu d-flex align-items-center ml-auto">
                             <div class="cart">
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="main_header_area">
+    <div class="main_header_area" style="height: 100px">
         <div class="container h-100">
             <div class="row h-100">
                 <div class="col-12 d-md-flex justify-content-between">

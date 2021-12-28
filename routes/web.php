@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function(){
         Route::put('kontak', 'KontakController@update')->name('kontak.update');
     });
 
-    Route::prefix('/toko')->name('toko.')->middleware('pelanggan')->namespace('Web')->group(function(){
+    Route::prefix('/susy-shop')->name('toko.')->middleware('pelanggan')->namespace('Web')->group(function(){
         Route::get('keranjang', 'KeranjangController@index')->name('keranjang');
         Route::post('keranjang', 'KeranjangController@insert')->name('keranjang.insert');
         Route::delete('keranjang', 'KeranjangController@delete')->name('keranjang.delete');
@@ -103,7 +103,7 @@ Route::middleware('auth')->group(function(){
     });
 });
 
-Route::prefix('/toko')->name('toko.')->namespace('Web')->group(function(){
+Route::prefix('/susy-shop')->name('toko.')->namespace('Web')->group(function(){
     Route::get('/', 'BerandaController@index')->name('/');
     Route::get('beranda', 'BerandaController@index')->name('beranda');
 

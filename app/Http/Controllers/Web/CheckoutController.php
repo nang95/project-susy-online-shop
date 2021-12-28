@@ -28,7 +28,7 @@ class CheckoutController extends Controller
             'pelanggan_id' => $pelanggan->id,
             'tanggal_pemesanan' => date('Y-m-d'),
             'total_pembayaran' => $request->total_pembayaran,
-            'status' => 1,
+            'status' => 0,
         ]);
 
         $pelanggan->update([

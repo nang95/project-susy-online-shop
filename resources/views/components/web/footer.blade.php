@@ -5,7 +5,7 @@
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="single_footer_area">
                     <div class="footer-logo">
-                        <img src="{{ asset('img/core-img/logo.png') }}" alt="">
+                        <img src="{{ asset('img/logo.png') }}" style="width: 100px; height: 100px; object-fit: contain" alt="">
                     </div>
                     <div class="copywrite_text d-flex align-items-center">
                         <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with Susy</a></p>

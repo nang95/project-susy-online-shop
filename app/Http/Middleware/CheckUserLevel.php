@@ -21,7 +21,7 @@ class CheckUserLevel
                 return redirect()->to('/admin');
                 break;
             case 'pelanggan':
-                return redirect()->to('/toko');
+                return redirect()->to('/susy-shop');
                 break;
         }
     }
