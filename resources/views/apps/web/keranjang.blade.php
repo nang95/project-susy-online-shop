@@ -86,7 +86,7 @@
                                 </li>
                             </ul>
                             <input type="hidden" name="product_collect" id="product-collect" value="">
-                            <button type="submit" id="checkout" class="btn karl-checkout-btn" disabled>Proceed to checkout</button>
+                            <button type="submit" id="checkout" class="btn karl-checkout-btn" disabled>Proses Sekarang</button>
                         </div>
                     </form>
                 </div>

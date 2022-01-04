@@ -45,7 +45,6 @@
                                     <input type="number" class="form-control" id="no_telfon" name="no_telfon" min="0" value="{{ $pelanggan->no_telfon }}" required>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
 
@@ -75,7 +74,7 @@
                                 <input type="hidden" value="{{ $total }}" name="total_pembayaran">
                             </ul>
 
-                            <button type="submit" class="btn karl-checkout-btn">Place Order</button>
+                            <button type="submit" class="btn karl-checkout-btn">Pesan Sekarang</button>
                         </div>
                     </div>    
                 </div>
